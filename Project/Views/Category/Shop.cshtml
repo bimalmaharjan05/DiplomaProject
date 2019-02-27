@@ -1,0 +1,27 @@
+﻿@model CategoryDetailsViewModel
+<div class="jumbotron text-center">
+
+    @foreach (var item in Model.Hampers)
+    {
+        <div class="card border-success bg-light mb-5" style="display:inline-block;">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" width="300" height="300" src="~/uploads/@item.Picture" alt="image">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">HamperID - @item.HamperId</li>
+                        <li class="list-group-item">Hamper Name - @item.HamperName</li>
+                        <li class="list-group-item">Hamper Category - @item.HamperCategory</li>
+                        <li class="list-group-item">Price - $@item.Price</li>
+                    </ul>
+                    <p class="card-text">@item.HamperDetails</p>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@item.HamperId">Add to Cart</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>

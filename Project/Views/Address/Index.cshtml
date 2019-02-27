@@ -1,0 +1,40 @@
+﻿@model AddressIndexViewModel
+<div class="jumbotron">
+
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action("Create", "Address", new { id = Model.Profile.ProfileId})" class="btn btn-sm btn-outline-secondary">Add Address</a>
+        }
+
+    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Address Line</th>
+                <th scope="col">Suburb</th>
+                <th scope="col">State</th>
+                <th scope="col">Post Code</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Addresses)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.AddressLine</td>
+                    <td>@item.Suburb</td>
+                    <td>@item.State</td>
+                    <td>@item.PostCode</td>
+                    <td>
+                        <a href="@Url.Action("Update", "Address", new { id = item.AddressId})">Edit</a> |
+                        <a href="@Url.Action("Delete", "Address", new { id = item.AddressId})">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+
+</div>

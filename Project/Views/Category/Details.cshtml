@@ -1,0 +1,45 @@
+﻿@model CategoryDetailsViewModel
+<div class="jumbotron text-center">
+
+    <div class="flex-row">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a class="btn btn-sm btn-outline-secondary float-left" href="@Url.Action("Create", "Hamper", new { id = Model.CategoryId })">Add Hamper</a>
+        }
+
+    </div>
+     @foreach (var item in Model.Hampers)
+       {
+            <div class="card border-success bg-light mb-5" style="display:inline-block;">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" width="300" height="300" src="~/uploads/@item.Picture" alt="image">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">HamperID - @item.HamperId</li>
+                            <li class="list-group-item">Hamper Name - @item.HamperName</li>
+                            <li class="list-group-item">Hamper Category - @item.HamperCategory</li>
+                            <li class="list-group-item">Price - $@item.Price</li>
+                        </ul>
+                        <p class="card-text">@item.HamperDetails</p>
+                        @if (User.Identity.IsAuthenticated)
+	                        {
+                                <a asp-controller="cart" asp-action="buy" asp-route-id="@item.HamperId">Add to Cart</a>
+	                        }
+                        <div class="d-flex justify-content-between align-items-center">
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                 <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" href="@Url.Action("Update","Hamper", new { id = item.HamperId })">Edit</a>
+                                    <a class="btn btn-sm btn-outline-secondary" href="@Url.Action("Delete", "Hamper", new { id = item.HamperId })">Delete</a>
+         
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    }
+    </div>

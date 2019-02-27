@@ -1,0 +1,44 @@
+﻿@model SearchIndexViewModel
+<div class="container jumbotron">
+    <div class="row">
+        <div class="row mt-3 mb-3">
+            <form class="form-inline" asp-action="Index" asp-controller="Search" method="get">
+                Min $ <input class="form-control m-2" asp-for="MinPrice" />
+                Max $ <input class="form-control m-2" asp-for="MaxPrice" />
+                <input class="btn btn-info" type="submit" value="Search" />
+            </form>
+        </div>
+        <div class="text-center">
+            <h3>Available Categories: </h3>
+            <div style="display:inline-block; vertical-align: middle; margin-bottom:15px">
+                <ul class="list-group">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <li class="list-group-item list-group-item-warning"><a href="~/Search/Index/@item.CategoryId">@item.CategoryName</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Hampers)
+        {
+            <div class="col-md-3">
+                <div class="card text-center" style="max-width: 35rem;">
+                    <img class="card-img-top" src="~/uploads/@item.Picture" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.HamperName</h5>
+                        <p class="card-text">@item.HamperDetails</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong class="primary-color">$@item.Price</strong></li>
+                    </ul>
+                    <div class="card-body">
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@item.HamperId" class="main-btn icon-btn"><i class="fa fa-shopping-cart">Add to Cart</i></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

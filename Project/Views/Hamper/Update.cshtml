@@ -1,0 +1,52 @@
+﻿@model HamperUpdateViewModel
+
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 p-5">
+            <div class="card-block">
+                <div class="card-header">
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Edit Hamper</h1>
+                </div>
+                <form asp-controller="Hamper" asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div class="mt-2">
+                        <input asp-for="HamperName" placeholder="Hamper Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="HamperName"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="CategoryName" placeholder="CategoryName" class="form-control" />
+                        <span class="text-danger" asp-validation-for="CategoryName"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="Price" placeholder="Price" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+                    <div class="mt-2">
+                        <textarea asp-for="HamperDetails" placeholder="Hamper Details" class="form-control" type="text"></textarea>
+                        <span class="text-danger" asp-validation-for="HamperDetails"></span>
+                    </div>
+                    <div class="mt-2">
+                        <img src="~/uploads/@Model.Picture" alt="Hamper Picture"/>
+                        <input asp-for="Picture" placeholder="Upload Picture" type="file" name="Picture" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <label asp-for="Discontinued">Discontinue</label>
+                        <input asp-for="Discontinued"  />
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="CategoryId" hidden="hidden" />
+                    </div>
+                    <div class="mt-2">
+                        
+                        <input asp-for="HamperId" hidden="hidden" />
+                    </div>
+                    <div class="mt-2">
+                        <input type="submit" value="Save Hamper" class="btn btn-info" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>

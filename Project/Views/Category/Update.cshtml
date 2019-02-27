@@ -1,0 +1,25 @@
+﻿@model CategoryUpdateViewModel
+
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-4 ">
+
+        </div>
+        <div class="col-md-4">
+            <form asp-controller="Category" asp-action="Update" method="post">
+
+                <h1 class="h3 mb-3 font-weight-normal">Update Category Name</h1>
+                <label asp-for="CategoryName" class="sr-only">Category Name</label>
+                <input asp-for="CategoryName" class="form-control" placeholder="Category Name" required="">
+                
+                <input asp-for="CategoryId" hidden="hidden">
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+            </form>
+        </div>
+        <div class="col-md-4 ">
+
+        </div>
+    </div>
+
+</div>

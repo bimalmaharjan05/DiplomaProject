@@ -1,0 +1,106 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body class="container-fluid">
+
+    <div class="row justify-content-end mr-md-5">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-action="UpdateProfile" asp-controller="Account">Update Profile</a>
+            <a class="ml-2" asp-action="Index" asp-controller="Address">Manage Address</a>
+            <a class="ml-2" asp-action="Logout" asp-controller="Account">Logout</a>
+            if (User.IsInRole("Admin"))
+            {
+                <a class="ml-2" asp-action="AddRole" asp-controller="Account">Add Role</a>
+            }
+            <p class="ml-2">Welcome  @User.Identity.Name </p>
+        }
+
+        else
+        {
+            <a class="ml-2" asp-action="Register" asp-controller="Account">Register</a>
+            <a class="ml-2" asp-action="Login" asp-controller="Account">Login</a>
+        }
+    </div>
+                    <header class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="~/images/logos/GrandeGiftLogo.png" class="img-fluid" style="width:150px" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <img src="~/images/logos/deliverylogo.jpg" class="img-fluid" style="width:100px" />
+                        </div>
+                        <div class="col-md-3 ">
+                            <p class="lead text-muted">
+                                Same Day Delivery to SYD, MEL, BNE<br />
+                                Next Business Day to Most Other Areas
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <img src="~/images/logos/openlogo.jpg" class="img-fluid" style="width:100px" />
+                        </div>
+                        <div class="col-md-2">
+                            <p class="lead text-muted">
+                                Mon - Fri: 7am - 8pm<br />
+                                Sat: 7am - 4pm
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <img src="~/images/logos/phonelogo.jpg" class="img-fluid" style="width:100px"  />
+                        </div>
+                        <div class="col-md-2">
+                            <p class="lead text-muted">
+                                0416518151  <br />
+                                For help or multiple orders
+                            </p>
+                        </div>
+                    </header>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand text-white">Grande Gift</a>
+
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/Home/Index">
+                                        Home<span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Category/Index">Category</a>
+                                </li>
+
+                            </ul>
+
+                    <a asp-controller="Search" asp-action="Index" class="btn btn-outline-success my-2 my-sm-0">Search By Category</a>
+
+            </div>
+        </nav>
+        <div>
+            @RenderBody()
+        </div>
+        <footer class="text-muted">
+            <div class="container">
+                <span class="float-left">
+                    © 2018 by Grande Gift. All rights reserved
+                </span>
+                <span class="float-right">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms of use</a>
+                </span>
+            </div>
+            <br />
+        </footer>
+        <script src="~/node_modules/jquery/dist/jquery.js"></script>
+        <script src="~/node_modules/popper.js/dist/umd/popper.js"></script>
+        <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model CategoryIndexViewModel
+<div class="jumbotron text-center">
+    <div class="font-weight-bold float-left flex-row">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a class="ml-2 btn btn-sm btn-outline-secondary float-left" asp-action="Create" asp-controller="Category">Create Category</a>
+        }
+    </div>
+    @foreach (var item in Model.Categories)
+    {
+
+        <div class="card border-success bg-light" style="width:18rem; text-align:center; display:inline-block;">
+            <div class="card-body text-success">
+                <h1 class="jumbotron-heading">@item.CategoryName</h1>
+                @if (User.IsInRole("Admin"))
+                {
+                    <h6>@Html.ActionLink("Update Category Name", "Update", "Category", new { id = item.CategoryId })</h6>
+                    <h5>@Html.ActionLink("All Hampers", "Details", "Category", new { id = item.CategoryId })</h5>
+                }
+                <h5>@Html.ActionLink("Hampers", "Shop", "Category", new { id = item.CategoryId })</h5>
+
+            </div>
+
+        </div>
+    }
+
+</div>

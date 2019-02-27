@@ -1,0 +1,28 @@
+﻿@model AccountLoginViewModel
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-4 ">
+
+        </div>
+        <div class="col-md-4">
+            <form asp-controller="Account" asp-action="Login" method="post">
+                
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label asp-for="Username" class="sr-only">User Name</label>
+                <input asp-for="Username" class="form-control" placeholder="User Name" required="" >
+                <label asp-for="Password" class="sr-only">Password</label>
+                <input asp-for="Password" type="password"  class="form-control" placeholder="Password" required="">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input asp-for="RememberMe" type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-info btn-block" type="submit">Log in</button>
+            </form>
+        </div>
+        <div class="col-md-4 ">
+
+        </div>
+    </div>
+
+</div>

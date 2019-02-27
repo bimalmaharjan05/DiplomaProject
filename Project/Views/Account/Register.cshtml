@@ -1,0 +1,54 @@
+﻿@model AccountRegisterViewModel
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 p-5">
+            <div class="card-block">
+                <div class="card-header">
+                    <h3> Registration</h3>
+                </div>
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <div class="mt-2">
+                        <input asp-for="UserName" placeholder="User Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="Password" placeholder="Password" class="form-control" type="password" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="ConfirmPassword" placeholder="Confirm Password" class="form-control" type="password" />
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="Email" placeholder="Email" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="FirstName" placeholder="First Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="LastName" placeholder="Last Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="LastName"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="Dob" type="date" placeholder="Date of birth" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Dob"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input asp-for="Phone" placeholder="Phone" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="mt-2">
+                        <input type="submit" value="Register" class="btn btn-info" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+
